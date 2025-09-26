@@ -1,0 +1,103 @@
+{% extends 'clinic/base.html' %}
+{% load static %}
+
+{% block content %}
+<!-- Герой-секция -->
+<section class="hero">
+    <div class="container">
+        <div class="hero-content">
+            <h2>Профессиональная стоматология в Ставрополе</h2>
+            <p>Современное оборудование, квалифицированные специалисты и индивидуальный подход к каждому пациенту</p>
+            <a href="{% url 'contacts' %}" class="btn">Записаться на прием</a>
+        </div>
+    </div>
+</section>
+
+<!-- О нас -->
+<section class="about-preview">
+    <div class="container">
+        <h2>О нашей клинике</h2>
+        <div class="about-content">
+            <div class="about-image">
+                <img src="{% static 'images/clinic-front.jpg' %}" alt="Фасад клиники">
+            </div>
+            <div class="about-text">
+                <p>Мы предлагаем полный спектр стоматологических услуг для взрослых и детей.</p>
+                <ul>
+                    <li>Терапевтическая стоматология</li>
+                    <li>Ортопедическая стоматология</li>
+                    <li>Хирургия и имплантация</li>
+                    <li>Детская стоматология</li>
+                    <li>Отбеливание зубов</li>
+                </ul>
+                <a href="{% url 'about' %}" class="btn-outline">Подробнее о нас</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Услуги -->
+<section class="services-preview">
+    <div class="container">
+        <h2>Наши услуги</h2>
+        <div class="services-grid">
+            {% for service in services %}
+            <div class="service-card">
+                <i class="{{ service.icon }}"></i>
+                <h3>{{ service.name }}</h3>
+                <p>{{ service.description }}</p>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="text-center">
+            <a href="{% url 'services' %}" class="btn">Все услуги</a>
+        </div>
+    </div>
+</section>
+
+<!-- Акции -->
+<section class="promotions-preview">
+    <div class="container">
+        <h2>Акции и специальные предложения</h2>
+        <div class="promotions-grid">
+            {% for promotion in promotions %}
+            <div class="promotion-card">
+                <div class="promotion-image">
+                    <img src="{{ promotion.image.url }}" alt="{{ promotion.title }}">
+                </div>
+                <div class="promotion-content">
+                    <h3>{{ promotion.title }}</h3>
+                    <p>{{ promotion.description }}</p>
+                    <span class="promotion-date">Действует до {{ promotion.end_date }}</span>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="text-center">
+            <a href="{% url 'promotions' %}" class="btn-outline">Все акции</a>
+        </div>
+    </div>
+</section>
+
+<!-- Отзывы -->
+<section class="reviews-preview">
+    <div class="container">
+        <h2>Отзывы наших пациентов</h2>
+        <div class="reviews-slider">
+            {% for review in reviews %}
+            <div class="review-card">
+                <div class="review-author">
+                    <img src="{{ review.photo.url }}" alt="{{ review.author }}">
+                    <h4>{{ review.author }}</h4>
+                </div>
+                <p>"{{ review.text }}"</p>
+                <span class="review-date">{{ review.created_at }}</span>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="text-center">
+            <a href="{% url 'reviews' %}" class="btn">Все отзывы</a>
+        </div>
+    </div>
+</section>
+{% endblock %}
