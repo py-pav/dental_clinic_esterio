@@ -7,16 +7,14 @@ SECRET_KEY = os.getenv('SECRET_KEY', 'django-insecure-default-key-for-dev')
 
 DEBUG = os.getenv('DEBUG', 'False') == 'True'
 
-ALLOWED_HOSTS = []
-if DEBUG:
-    ALLOWED_HOSTS.extend(['localhost', '127.0.0.1'])
-else:
-    ALLOWED_HOSTS.extend([
-        'esterio-stav.ru',
-        'www.esterio-stav.ru',
-        'paukkr.pythonanywhere.com',
-        '.onrender.com',
-    ])
+ALLOWED_HOSTS = [
+    'paukkr.pythonanywhere.com',
+    'esterio-stav.ru',
+    'www.esterio-stav.ru',
+    '.onrender.com',
+    'localhost',
+    '127.0.0.1',
+]
 
 INSTALLED_APPS = [
     'django.contrib.admin',
