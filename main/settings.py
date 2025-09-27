@@ -112,12 +112,6 @@ if 'RENDER' in os.environ:
         )
     }
 
-    try:
-        from django.core.management import execute_from_command_line
-        execute_from_command_line(['manage.py', 'migrate'])
-    except:
-        pass
-
 # Настройки для PythonAnywhere
 if 'PYTHONANYWHERE' in os.environ:
     DEBUG = False
