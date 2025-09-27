@@ -5,7 +5,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = os.getenv('SECRET_KEY', 'django-insecure-default-key-for-dev')
 
-DEBUG = os.getenv('DEBUG', 'True') == 'True'
+DEBUG = os.getenv('DEBUG', 'False') == 'True'
 
 ALLOWED_HOSTS = []
 if DEBUG:
@@ -108,9 +108,13 @@ if 'RENDER' in os.environ:
     DATABASES = {
         'default': dj_database_url.config(
             default=os.environ.get('DATABASE_URL'),
-            conn_max_age=600
+            conn_max_age=600,
+            engine='django.db.backends.postgresql',
         )
     }
+
+    if DATABASES['default'].get('ENGINE') is None:
+        DATABASES['default']['ENGINE'] = 'django.db.backends.postgresql'
 
 # Настройки для PythonAnywhere
 if 'PYTHONANYWHERE' in os.environ:
