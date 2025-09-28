@@ -1,61 +1,46 @@
-from django.db import models
-
-
-class Service(models.Model):
-    name = models.CharField(max_length=100, verbose_name="Название услуги")
-    description = models.TextField(verbose_name="Описание услуги")
-    icon = models.CharField(max_length=50, verbose_name="Иконка", help_text="Имя класса Font Awesome")
-
-    class Meta:
-        verbose_name = "Услуга"
-        verbose_name_plural = "Услуги"
+class Service:
+    def __init__(self, name, description, icon):
+        self.name = name
+        self.description = description
+        self.icon = icon
 
     def __str__(self):
         return self.name
 
 
-class Doctor(models.Model):
-    name = models.CharField(max_length=100, verbose_name="ФИО врача")
-    position = models.CharField(max_length=100, verbose_name="Должность")
-    category = models.CharField(max_length=50, verbose_name="Категория")
-    experience = models.CharField(max_length=50, verbose_name="Стаж")
-    bio = models.TextField(verbose_name="Биография")
-    education = models.TextField(verbose_name="Образование")
-    qualifications = models.TextField(verbose_name="Повышение квалификации")
-    photo = models.ImageField(upload_to='doctors/', verbose_name="Фотография")
-
-    class Meta:
-        verbose_name = "Врач"
-        verbose_name_plural = "Врачи"
+class Doctor:
+    def __init__(self, name, position, category, experience, bio, education, qualifications, photo):
+        self.name = name
+        self.position = position
+        self.category = category
+        self.experience = experience
+        self.bio = bio
+        self.education = education
+        self.qualifications = qualifications
+        self.photo = photo
 
     def __str__(self):
         return self.name
 
 
-class Promotion(models.Model):
-    title = models.CharField(max_length=100, verbose_name="Название акции")
-    description = models.TextField(verbose_name="Описание акции")
-    image = models.ImageField(upload_to='promotions/', verbose_name="Изображение")
-    start_date = models.DateField(verbose_name="Дата начала")
-    end_date = models.DateField(verbose_name="Дата окончания")
-
-    class Meta:
-        verbose_name = "Акция"
-        verbose_name_plural = "Акции"
+class Promotion:
+    def __init__(self, title, description, image, start_date, end_date):
+        self.title = title
+        self.description = description
+        self.image = image
+        self.start_date = start_date
+        self.end_date = end_date
 
     def __str__(self):
         return self.title
 
 
-class Review(models.Model):
-    author = models.CharField(max_length=100, verbose_name="Автор отзыва")
-    text = models.TextField(verbose_name="Текст отзыва")
-    photo = models.ImageField(upload_to='reviews/', verbose_name="Фотография автора")
-    created_at = models.DateField(auto_now_add=True, verbose_name="Дата создания")
-
-    class Meta:
-        verbose_name = "Отзыв"
-        verbose_name_plural = "Отзывы"
+class Review:
+    def __init__(self, author, text, photo, created_at):
+        self.author = author
+        self.text = text
+        self.photo = photo
+        self.created_at = created_at
 
     def __str__(self):
         return f"Отзыв от {self.author}"
