@@ -2,10 +2,9 @@ import os
 from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
-
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 SECRET_KEY = os.getenv('SECRET_KEY', 'django-insecure-default-key-for-dev')
-
-DEBUG = True  # Временно включаем DEBUG для разработки
+DEBUG = os.getenv('DEBUG', False)
 
 ALLOWED_HOSTS = ['*']  # Временно разрешаем все хосты
 
@@ -41,7 +40,8 @@ WSGI_APPLICATION = 'main.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.dummy',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 
@@ -64,15 +64,11 @@ STATICFILES_DIRS = [
 # Whitenoise для обслуживания статических файлов
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-DEFAULT_AUTO_FIELD = None
-
 # Для продакшена
 if not DEBUG:
     ALLOWED_HOSTS = [
-        'paukkr.pythonanywhere.com',
         'esterio-stav.ru',
         'www.esterio-stav.ru',
-        '.onrender.com',
     ]
 
     # Безопасность для продакшена
