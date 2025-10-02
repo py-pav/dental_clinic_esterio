@@ -71,8 +71,11 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 # Для продакшена
 if not DEBUG:
     ALLOWED_HOSTS = [
-        'esterio-stav.ru',
-        'www.esterio-stav.ru',
+        'esterio-stom.ru',
+        'www.esterio-stom.ru',
+        '92.51.23.53',
+        'localhost',
+        '127.0.0.1',
     ]
 
     # Безопасность для продакшена
