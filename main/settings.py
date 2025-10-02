@@ -4,7 +4,11 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 SECRET_KEY = os.getenv('SECRET_KEY', 'django-insecure-default-key-for-dev')
-DEBUG = os.getenv('DEBUG', False)
+
+if os.getenv('DEBUG'):
+    DEBUG = os.getenv('DEBUG') == 'True'
+else:
+    DEBUG = False
 
 ALLOWED_HOSTS = ['*']  # Временно разрешаем все хосты
 
@@ -41,7 +45,7 @@ WSGI_APPLICATION = 'main.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
 
