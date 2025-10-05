@@ -5,12 +5,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 SECRET_KEY = os.getenv('SECRET_KEY', 'django-insecure-default-key-for-dev')
 
-if os.getenv('DEBUG'):
-    DEBUG = os.getenv('DEBUG') == 'True'
-else:
-    DEBUG = False
-
-ALLOWED_HOSTS = ['*']  # Временно разрешаем все хосты
+DEBUG = False
 
 INSTALLED_APPS = [
     'django.contrib.staticfiles',
@@ -68,16 +63,17 @@ STATICFILES_DIRS = [
 # Whitenoise для обслуживания статических файлов
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-# Для продакшена
-if not DEBUG:
-    ALLOWED_HOSTS = [
-        'esterio-stom.ru',
-        'www.esterio-stom.ru',
-        '92.51.23.53',
-        'localhost',
-        '127.0.0.1',
-    ]
+ALLOWED_HOSTS = [
+    'esterio-stom.ru',
+    'www.esterio-stom.ru',
+    '92.51.23.53',
+    'localhost',
+    '127.0.0.1',
+]
 
-    # Безопасность для продакшена
-    SECURE_SSL_REDIRECT = True
-    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+# Безопасность для продакшена
+SECURE_SSL_REDIRECT = True
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
+SECURE_HSTS_SECONDS = 31536000  # 1 year
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
