@@ -1,0 +1,15 @@
+User-Agent: *
+Disallow: /page155754256.html
+Disallow: /page155753116.html
+Disallow: /tilda/form*
+Disallow: /tilda/rec*
+Disallow: /tilda/click*
+Disallow: /tilda/scroll*
+Disallow: /tilda/popup*
+Disallow: /tilda/cart*
+Disallow: /tilda/product*
+Disallow: /tilda/event*
+Disallow:
+
+
+Sitemap: http://esterio-stom.tilda.ws/sitemap.xml

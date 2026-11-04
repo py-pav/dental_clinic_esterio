@@ -1,0 +1,38 @@
+ErrorDocument 403 /404.html
+ErrorDocument 404 /404.html
+
+DirectoryIndex page110395726.html
+
+RewriteEngine On
+
+RewriteCond %{REQUEST_FILENAME} /robots.txt
+RewriteCond "%{DOCUMENT_ROOT}/robots_%{HTTP_HOST}.txt" -f
+RewriteRule ^(.*)$ robots_%{HTTP_HOST}.txt [NC,L]
+RewriteRule ^therapy$ page164465409.html [NC]
+RewriteRule ^therapy/$ page164465409.html [NC]
+
+RewriteRule ^implantation$ page155726926.html [NC]
+RewriteRule ^implantation/$ page155726926.html [NC]
+
+RewriteRule ^prosthetics$ page156032556.html [NC]
+RewriteRule ^prosthetics/$ page156032556.html [NC]
+
+RewriteRule ^cleaning$ page164466309.html [NC]
+RewriteRule ^cleaning/$ page164466309.html [NC]
+
+RewriteRule ^terentev$ page179662709.html [NC]
+RewriteRule ^terentev/$ page179662709.html [NC]
+
+RewriteRule ^price$ page155756616.html [NC]
+RewriteRule ^price/$ page155756616.html [NC]
+
+RewriteRule ^actions$ page161798909.html [NC]
+RewriteRule ^actions/$ page161798909.html [NC]
+
+RewriteRule ^privacy_policy$ page198578609.html [NC]
+RewriteRule ^privacy_policy/$ page198578609.html [NC]
+
+RewriteRule ^contacts$ page155873506.html [NC]
+RewriteRule ^contacts/$ page155873506.html [NC]
+
+
